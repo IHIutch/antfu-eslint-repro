@@ -1,0 +1,25 @@
+{
+  "name": "antfu-eslint-repro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "astro": "^4.11.5",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.21.2",
+    "astro-eslint-parser": "^1.0.2",
+    "eslint": "9.5.0",
+    "eslint-plugin-astro": "^1.2.2",
+    "eslint-plugin-format": "^0.1.2",
+    "prettier-plugin-astro": "^0.14.0"
+  }
+}

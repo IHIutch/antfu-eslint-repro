@@ -1,0 +1,72 @@
+---
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+
+		    <script>
+      function disableColorModeTransition() {
+        const css = document.createElement('style')
+        css.appendChild(
+          document.createTextNode(
+            `*{
+              -webkit-transition:none!important;
+              -moz-transition:none!important;
+              -o-transition:none!important;
+              -ms-transition:none!important;
+              transition:none!important
+            }`,
+          ),
+        )
+        document.head.appendChild(css)
+
+        return function () {
+          // Force restyle
+          ;(function () {
+            return window.getComputedStyle(document.body)
+          })()
+
+          // Wait for next tick before removing
+          setTimeout(() => {
+            document.head.removeChild(css)
+          }, 1)
+        }
+      }
+
+      function setDarkMode() {
+        const theme = (() => {
+          if (
+            typeof localStorage !== 'undefined' && localStorage.getItem('theme')
+          ) {
+            return localStorage.getItem('theme')
+          }
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark'
+          }
+          return 'light'
+        })()
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark')
+          // document.documentElement.classList.remove('theme-dark-plus')
+          // document.documentElement.classList.add('theme-light-plus')
+        } else {
+          document.documentElement.classList.add('dark')
+          // document.documentElement.classList.remove('theme-light-plus')
+          // document.documentElement.classList.add('theme-dark-plus')
+        }
+        return disableColorModeTransition()()
+      }
+      setDarkMode()
+      document.addEventListener('astro:after-swap', setDarkMode)
+ </script>
+	</body>
+</html>
